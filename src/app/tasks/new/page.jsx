@@ -14,6 +14,7 @@ export default function Page() {
   const createTask = async () => {
     try {
       const res = await fetch("/api/tasks", {
+        cache:"no-store",
         method: "POST",
         body: JSON.stringify(newTask),
         headers: {
@@ -32,6 +33,7 @@ export default function Page() {
   const getTask = useCallback(async () => {
     try {
       const res = await fetch(`/api/tasks/${params.id}`, {
+        cache:"no-store",
         method: "GET",
       });
       const data = await res.json();
@@ -47,6 +49,7 @@ export default function Page() {
   const updateTask = async () => {
     try {
       const res = await fetch(`/api/tasks/${params.id}`, {
+        cache:"no-store",
         method: "PUT",
         body: JSON.stringify(newTask),
         headers: {
