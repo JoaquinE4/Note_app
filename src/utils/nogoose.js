@@ -1,9 +1,10 @@
 import mongoose from "mongoose";
-
+import dotenv from "dotenv"
+dotenv.config();
 export default async function connectDB() {
   try {
     const connect = await mongoose.connect(
-      "mongodb+srv://jbackend0:bPXZtSA9yybO5LmR@cluster0.l0nnjep.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0",
+      process.env.MONGODB_URL,
       {
         dbName: "Notas",
         useNewUrlParser: true,
