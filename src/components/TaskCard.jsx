@@ -1,7 +1,7 @@
 
 import Link from "next/link";
 
-export function TaskCard({ task }) {
+export default function TaskCard({ task }) {
   return (
     <Link href={`/tasks/${task._id}`}>
       <div className="bg-gray-800 p-10 text-white rounded-md hover:cursor-pointer hover:bg-gray-700">

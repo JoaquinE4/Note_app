@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useRouter, useParams } from "next/navigation";
 import { NextResponse } from "next/server";
 
@@ -29,7 +29,7 @@ export default function Page() {
     }
   };
 
-  const getTask = async () => {
+  const getTask = useCallback(async () => {
     try {
       const res = await fetch(`/api/tasks/${params.id}`, {
         method: "GET",
@@ -42,7 +42,7 @@ export default function Page() {
         { status: 409 }
       );
     }
-  };
+  }, [params.id]);
 
   const updateTask = async () => {
     try {
@@ -92,7 +92,7 @@ export default function Page() {
     if (params.id) {
       getTask();
     }
-  }, []);
+  }, [getTask, params.id]);
   return (
     <div className="h-[calc(100vh-7rem)] flex justify-center items-center">
       <form onSubmit={handleSubmit}>
