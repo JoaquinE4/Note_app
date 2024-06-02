@@ -10,7 +10,7 @@ export default function Navbar() {
             </Link>
         <ul className="flex gap-x-4">
             <li>
-                <Link href={"/tasks/new"}>Nueva Tarea</Link>
+                <Link href={"/tasks/new"}>Nueva nota</Link>
             </li>
         </ul>
         </div>

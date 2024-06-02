@@ -3,12 +3,16 @@ import { connectDB } from "@/utils/nogoose";
 import {taskModel} from "@/models/tasks.model"
 
 export async function GET(){
+try {
     connectDB()
 
     const tareas = await  taskModel.find()
 
     return NextResponse.json({tareas})
 
+} catch (error) {
+    return NextResponse.json({error:"No se encontro la Nota "},{status:409})
+}
 
 }
 
