@@ -1,15 +1,22 @@
  
-import { connectDB } from "@/utils/nogoose"
-import { taskModel } from "@/models/tasks.model"
+import connectDB  from "@/utils/nogoose"
+import  {taskModel}  from "@/models/tasks.model"
 import TaskCard from '@/components/TaskCard';
 
-async function loadTask(){
-  connectDB()
-  const task = await taskModel.find().lean()
-console.log(task)
-return task
-}
+async function loadTask() {
+  try {
+    // Conectar a la base de datos
+    await connectDB();
 
+    // Consultar las tareas (suponiendo que taskModel.find() devuelve una Promise)
+    const tasks = await taskModel.find().lean();
+
+    return tasks;
+  } catch (error) {
+    console.error('Error loading tasks:', error);
+    throw new Error('Error loading tasks'); // Puedes personalizar este mensaje de error según sea necesario
+  }
+}
 
 
 export default async function page() {

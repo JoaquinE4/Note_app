@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { connectDB } from "@/utils/nogoose";
+import  connectDB from "@/utils/nogoose";
 import {taskModel} from "@/models/tasks.model"
 
 export async function GET(){
