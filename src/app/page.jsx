@@ -1,7 +1,7 @@
  
 import { connectDB } from "@/utils/nogoose"
 import { taskModel } from "@/models/tasks.model"
-import TaskCard from "@/components/taskCard"
+import {TaskCard} from "@/components/taskCard"
 
 async function loadTask(){
   connectDB()
