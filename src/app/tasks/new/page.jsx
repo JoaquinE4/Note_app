@@ -14,6 +14,8 @@ export default function Page() {
   const createTask = async () => {
     try {
       const res = await fetch("/api/tasks", {
+        next:{revalidate:3},
+
         cache:"no-store",
         method: "POST",
         body: JSON.stringify(newTask),
@@ -33,6 +35,8 @@ export default function Page() {
   const getTask = useCallback(async () => {
     try {
       const res = await fetch(`/api/tasks/${params.id}`, {
+        next:{revalidate:3},
+
         cache:"no-store",
         method: "GET",
       });
@@ -49,7 +53,7 @@ export default function Page() {
   const updateTask = async () => {
     try {
       const res = await fetch(`/api/tasks/${params.id}`, {
-        cache:"no-store",
+        next:{revalidate:3},
         method: "PUT",
         body: JSON.stringify(newTask),
         headers: {
@@ -85,6 +89,8 @@ export default function Page() {
   const handleDelete = () => {
     if (window.confirm("Desea eliminar la tarea")) {
       fetch(`/api/tasks/${params.id}`, {
+        next:{revalidate:3},
+
         method: "DELETE",
       });
       router.push("/");
